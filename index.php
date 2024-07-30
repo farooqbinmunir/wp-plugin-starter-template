@@ -1,13 +1,13 @@
 <?php
 	/**
-	 * Plugin Name: Code Manager
+	 * Plugin Name: FBM Plugin Name
 	 * Plugin URI: https://farooqbinmunir.github.io/
 	 * Author: Farooq Bin Munir
 	 * Author URI: https://farooqbinmunir.github.io/
 	 * Version: 1.0
 	 * License: GNU General Public License v2
 	 * Description: A Simple Plugin starter template with all required steps packaged
-	 * Text Domain: fbm-domain
+	 * Text Domain: fbm-textdomain
 	*/
 
 	/*  
@@ -34,10 +34,10 @@
 	// define('FBM_PLUGIN_NAME', 'fbm-starter'); // You plugin folder name
 	define('FBM_PLUGIN_DIR', plugin_dir_path( __FILE__ ));
 	define('FBM_PLUGIN_DIR_NAME', plugin_basename(dirname(__FILE__)));
-	define('FBM_PLUGIN_TITLE', 'Code Manager by Farooq Bin Munir');
-	define('FBM_PLUGIN_MENU_NAME', 'Code Manager');
-	define('FBM_PLUGIN_TABLE', $wpdb->prefix . 'code_manager'); // Change table name as per your requirement and customize the table below
-	define('FBM_PLUGIN_NONCE', 'code_manager_ajax_nonce');
+	define('FBM_PLUGIN_TITLE', 'FBM Plugin by Farooq Bin Munir');
+	define('FBM_PLUGIN_MENU_NAME', 'FBM');
+	define('FBM_PLUGIN_TABLE', $wpdb->prefix . 'fbm_plugin_table'); // Change table name as per your requirement and customize the table below
+	define('FBM_PLUGIN_NONCE', 'fbm_ajax_nonce');
 
 	// Including functions.php file to use it's functions here
 	require_once(FBM_PLUGIN_DIR . 'inc/functions.php');
