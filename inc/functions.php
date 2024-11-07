@@ -1,6 +1,6 @@
 <?php
 
-	/* Wiselogix - Custom Plugin functions */
+	/* FBM - Custom Plugin functions */
 
 	// Including utility functions to be available in this file
 	require_once(FBM_PLUGIN_DIR . 'inc/utilities.php');
@@ -9,17 +9,14 @@
 	function fbm_backend_enqueues(){
 
 		// Enqueue Styles
-		wp_enqueue_style('fbm_backend_styles', plugins_url(FBM_PLUGIN_DIR_NAME) . '/assets/css/backend/backend.css', '', time(), 'all');
-		wp_enqueue_style('bootstrap-css', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css', '', '1.0', 'all');
+		wp_enqueue_style('fbm_backend_styles', FBM_PLUGIN_URL . '/assets/css/backend/backend.css', '', time());
 
 		// Enqueue Scripts
-		wp_enqueue_script('fbm_backend_scripts', plugins_url(FBM_PLUGIN_DIR_NAME) . '/assets/js/backend/backend.js', ['jquery'], time(), true);
-		wp_enqueue_script('bootstrap-js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js', 'jquery', '1.0', false);
+		wp_enqueue_script('fbm_backend_scripts', FBM_PLUGIN_URL . '/assets/js/backend/backend.js', ['jquery'], time(), true);
 
 		wp_localize_script('fbm_backend_scripts', 'fbm_ajax', array(
 			'url' => admin_url('admin-ajax.php'),
 			'nonce' => wp_create_nonce(FBM_PLUGIN_NONCE),
-			'path' => $GLOBALS['path'],
 		));
 
 	}
@@ -28,12 +25,12 @@
 	function fbm_frontend_enqueues(){
 
 		// Enqueue Styles
-		wp_enqueue_style('fbm_frontend_styles', plugins_url(FBM_PLUGIN_DIR_NAME) . '/assets/css/frontend/frontend.css', '', time(), 'all');
-		wp_enqueue_style('slick_css', plugins_url(FBM_PLUGIN_DIR_NAME) . '/assets/css/frontend/slick.css', '', '1.0', 'all');
+		wp_enqueue_style('fbm_frontend_styles', FBM_PLUGIN_URL . '/assets/css/frontend/frontend.css', '', time());
+		wp_enqueue_style('slick_css', FBM_PLUGIN_URL . '/assets/css/frontend/slick.css', '', '1.0', 'all');
 
 		// Enqueue Scripts
-		wp_enqueue_script('slick_js', plugins_url(FBM_PLUGIN_DIR_NAME) . '/assets/js/frontend/slick.min.js', ['jquery'], '1.0');
-		wp_enqueue_script('frontend_js', plugins_url(FBM_PLUGIN_DIR_NAME) . '/assets/js/frontend/frontend.js', ['jquery'], time(), true);
+		wp_enqueue_script('slick_js', FBM_PLUGIN_URL . '/assets/js/frontend/slick.min.js', ['jquery'], '1.0');
+		wp_enqueue_script('frontend_js', FBM_PLUGIN_URL . '/assets/js/frontend/frontend.js', ['jquery'], time(), true);
 		
 	}
 
@@ -70,7 +67,7 @@
 
 				<div class="fbm_ui_wrap">
 					<div class="fbm_ui_header">
-						<h2 class="fbm_header_page_title"><?php echo get_admin_page_title(); ?></h2>
+						<h2 class="fbm_header_page_title"><?= get_admin_page_title(); ?></h2>
 					</div>
 
 					<hr class="fbm_line" />
@@ -85,7 +82,7 @@
 		</div>
 	<?php }
 
-	// Submenu page for CPTs
+	// Submenu page
 	function fbm_submenu_callback(){ ?>
 	
 		<div class="wrap">
@@ -94,7 +91,7 @@
 
 				<div class="fbm_ui_wrap">
 					<div class="fbm_ui_header">
-						<h2 class="fbm_header_page_title"><?php echo get_admin_page_title(); ?></h2>
+						<h2 class="fbm_header_page_title"><?= get_admin_page_title(); ?></h2>
 					</div>
 
 					<hr class="fbm_line" />

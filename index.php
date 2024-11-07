@@ -34,6 +34,7 @@
 	// define('FBM_PLUGIN_NAME', 'fbm-starter'); // You plugin folder name
 	define('FBM_PLUGIN_DIR', plugin_dir_path( __FILE__ ));
 	define('FBM_PLUGIN_DIR_NAME', plugin_basename(dirname(__FILE__)));
+	define('FBM_PLUGIN_URL', plugins_url(FBM_PLUGIN_DIR_NAME));
 	define('FBM_PLUGIN_TITLE', 'FBM Plugin by Farooq Bin Munir');
 	define('FBM_PLUGIN_MENU_NAME', 'FBM');
 	define('FBM_PLUGIN_TABLE', $wpdb->prefix . 'fbm_plugin_table'); // Change table name as per your requirement and customize the table below
@@ -50,15 +51,15 @@
 
 	// Create a table in database to store plugin data when user activate the plugin
 	function fbm_activate(){
-
-		$query = "CREATE TABLE FBM_PLUGIN_TABLE (
+		$table = FBM_PLUGIN_TABLE;
+		$query = "CREATE TABLE $table (
 			id int(11) NOT NULL AUTO_INCREMENT,
 			name VARCHAR(255) NOT NULL,
 			PRIMARY KEY (id)
 		)";
 
 		require_once (ABSPATH . 'wp-admin/includes/upgrade.php');
-		maybe_create_table(FBM_PLUGIN_TABLE, $query);
+		dbDelta($query);
 		flush_rewrite_rules();
 	}
 
@@ -67,7 +68,9 @@
 
 	// Delete the previously created database table when user deactivate the plugin
 	function fbm_deactivate(){
-		$sql = "DROP TABLE IF EXISTS FBM_PLUGIN_TABLE";
+		global $wpdb;
+		$table = FBM_PLUGIN_TABLE;
+		$sql = "DROP TABLE IF EXISTS $table";
 		$wpdb->query($sql);
 		flush_rewrite_rules();
 	}

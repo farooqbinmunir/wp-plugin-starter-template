@@ -1,14 +1,8 @@
 <?php
 
 
-	function printArray($arr){
-		echo '<pre>';
-		print_r($arr);
-		echo '</pre>';
-	}
-
 	// Custom Function for registering Custom Post Types
-	function fbm_register_cpt($postTypeTitle, $singularName = 'Item', $menuPosition = 5, $hasTaxonomy = true, $taxonomyName = 'Categories'){
+	function fbm_plugin_register_cpt($postTypeTitle, $singularName = 'Item', $menuPosition = 5, $hasTaxonomy = true, $taxonomyName = 'Categories'){
 
 	    $cpt_name = ucwords(str_replace(['-', '_'], ' ', $postTypeTitle), ' ');
 	    $cpt_slug = sanitize_title_with_dashes($cpt_name);
@@ -55,15 +49,4 @@
 	        flush_rewrite_rules();
 	    }
 	}
-
-
-	$host = $_SERVER['HTTP_HOST'];
-	$path = '';
-	if($host === 'localhost'){
-		$path = $_SERVER['PHP_SELF'];
-		$path = explode('wp-admin', $path)[0];
-	}else{
-		$path = '/';
-	}
-	$GLOBALS['path'] = $path;
 	
